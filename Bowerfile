@@ -1,3 +1,4 @@
 asset 'bootstrap-sass-official'
 asset 'angular', '~> 1.4.8'
 resolution 'angular', '~> 1.4.8'
+asset 'angular-mocks'
