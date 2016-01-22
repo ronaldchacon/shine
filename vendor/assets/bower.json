@@ -3,7 +3,8 @@
   "dependencies": {
     "bootstrap-sass-official": "latest",
     "angular": "~> 1.4.8",
-    "angular-mocks": "latest"
+    "angular-mocks": "latest",
+    "angular-route": "1.4.8"
   },
   "resolutions": {
     "angular": "~> 1.4.8"
