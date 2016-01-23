@@ -25,6 +25,22 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: refresh_customer_details(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION refresh_customer_details() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+      BEGIN
+        REFRESH MATERIALIZED VIEW CONCURRENTLY customer_details;
+        RETURN NULL;
+      EXCEPTION
+        WHEN feature_not_supported THEN
+          RETURN NULL;
+      END $$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -464,6 +480,34 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: refresh_customer_details; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER refresh_customer_details AFTER INSERT OR DELETE OR UPDATE ON customers FOR EACH STATEMENT EXECUTE PROCEDURE refresh_customer_details();
+
+
+--
+-- Name: refresh_customer_details; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER refresh_customer_details AFTER INSERT OR DELETE OR UPDATE ON customers_shipping_addresses FOR EACH STATEMENT EXECUTE PROCEDURE refresh_customer_details();
+
+
+--
+-- Name: refresh_customer_details; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER refresh_customer_details AFTER INSERT OR DELETE OR UPDATE ON customers_billing_addresses FOR EACH STATEMENT EXECUTE PROCEDURE refresh_customer_details();
+
+
+--
+-- Name: refresh_customer_details; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER refresh_customer_details AFTER INSERT OR DELETE OR UPDATE ON addresses FOR EACH STATEMENT EXECUTE PROCEDURE refresh_customer_details();
+
+
+--
 -- Name: fk_rails_03434abdec; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -526,4 +570,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160122234500');
 INSERT INTO schema_migrations (version) VALUES ('20160122234549');
 
 INSERT INTO schema_migrations (version) VALUES ('20160123084000');
+
+INSERT INTO schema_migrations (version) VALUES ('20160123090055');
 
