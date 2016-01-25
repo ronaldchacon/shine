@@ -66,33 +66,33 @@
         </div>
         <div class="panel-body">
           <div class="form-group has-feedback" ng-class="{
-            'has-error': form.billing_street.$invalid && form.billing_street.$dirty,
-            'has-success': form.billing_street.$valid && form.billing_street.$touched}">
-            <label class="sr-only" for="billing_street">Street Address</label>
-            <input type="text" class="form-control" name="billing_street" ng-model="customer.billing_street" required>
-            <p class="help-block" ng-messages="form.billing_street.$error">
+            'has-error': form.shipping_street.$invalid && form.shipping_street.$dirty,
+            'has-success': form.shipping_street.$valid && form.shipping_street.$touched}">
+            <label class="sr-only" for="shipping_street">Street Address</label>
+            <input type="text" class="form-control" name="shipping_street" ng-model="customer.shipping_street" required>
+            <p class="help-block" ng-messages="form.shipping_street.$error">
               <span ng-message="required">Street Address is required</span>
             </p>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group has-feedback" ng-class="{
-                'has-error': form.billing_city.$invalid && form.billing_city.$dirty,
-                'has-success': form.billing_city.$valid && form.billing_city.$touched}">
-                <label class="sr-only" for="billing_city">City</label>
-                <input type="text" class="form-control" name="billing_city" ng-model="customer.billing_city" required>
-                <p class="help-block" ng-messages="form.billing_city.$error">
+                'has-error': form.shipping_city.$invalid && form.shipping_city.$dirty,
+                'has-success': form.shipping_city.$valid && form.shipping_city.$touched}">
+                <label class="sr-only" for="shipping_city">City</label>
+                <input type="text" class="form-control" name="shipping_city" ng-model="customer.shipping_city" required>
+                <p class="help-block" ng-messages="form.shipping_city.$error">
                   <span ng-message="required">City is required</span>
                 </p>
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group has-feedback" ng-class="{
-                'has-error': form.billing_state.$invalid && form.billing_state.$dirty,
-                'has-success': form.billing_state.$valid && form.billing_state.$touched}">
-                <label class="sr-only" for="billing_state">State</label>
-                <input type="text" class="form-control" name="billing_state" ng-model="customer.billing_state" required pattern="[A-Z][A-Z]">
-                <p class="help-block" ng-messages="form.billing_state.$error">
+                'has-error': form.shipping_state.$invalid && form.shipping_state.$dirty,
+                'has-success': form.shipping_state.$valid && form.shipping_state.$touched}">
+                <label class="sr-only" for="shipping_state">State</label>
+                <input type="text" class="form-control" name="shipping_state" ng-model="customer.shipping_state" required pattern="[A-Z][A-Z]">
+                <p class="help-block" ng-messages="form.shipping_state.$error">
                   <span ng-message="required">State is required</span>
                   <span ng-message="pattern">State must be 2 characters</span>
                 </p>
@@ -100,11 +100,11 @@
             </div>
             <div class="col-md-4">
               <div class="form-group has-feedback" ng-class="{
-                'has-error': form.billing_zipcode.$invalid && form.billing_zipcode.$dirty,
-                'has-success': form.billing_zipcode.$valid && form.billing_zipcode.$touched}">
-                <label class="sr-only" for="billing_zipcode">Zip</label>
-                <input type="text" class="form-control" name="billing_zipcode" ng-model="customer.billing_zipcode" required pattern="\d{5}">
-                <p class="help-block" ng-messages="form.billing_zipcode.$error">
+                'has-error': form.shipping_zipcode.$invalid && form.shipping_zipcode.$dirty,
+                'has-success': form.shipping_zipcode.$valid && form.shipping_zipcode.$touched}">
+                <label class="sr-only" for="shipping_zipcode">Zip</label>
+                <input type="text" class="form-control" name="shipping_zipcode" ng-model="customer.shipping_zipcode" required pattern="\d{5}">
+                <p class="help-block" ng-messages="form.shipping_zipcode.$error">
                   <span ng-message="required">Zip code is required</span>
                   <span ng-message="pattern">Zip code must be 5 digits</span>
                 </p>
