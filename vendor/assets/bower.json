@@ -5,7 +5,8 @@
     "angular": "~> 1.4.8",
     "angular-mocks": "latest",
     "angular-route": "1.4.8",
-    "angular-resource": "1.4.8"
+    "angular-resource": "1.4.8",
+    "angular-messages": "1.4.8"
   },
   "resolutions": {
     "angular": "~> 1.4.8"

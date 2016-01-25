@@ -1,4 +1,4 @@
-var app = angular.module('customers', ['ngRoute', 'ngResource', 'templates']);
+var app = angular.module('customers', ['ngRoute', 'ngResource', 'ngMessages', 'templates']);
 
 app.config(["$routeProvider", function($routeProvider) {
   $routeProvider.when("/", {
@@ -50,6 +50,12 @@ app.controller("CustomerDetailController", ["$scope", "$http", "$routeParams",
   var Customer = $resource("/customers/:customerId.json");
 
   $scope.customer = Customer.get({ "customerId": $scope.customerId });
+
+  $scope.save = function() {
+    if ($scope.form.$valid) {
+      alert("Save!");
+    }
+  };
 }]);
 
 app.controller("CustomerCreditCardController", ["$scope", "$resource", function($scope, $resource) {
