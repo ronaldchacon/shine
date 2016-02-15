@@ -14,6 +14,7 @@ gem 'bower-rails', '~> 0.10.0'
 gem 'faker'
 gem 'angular-rails-templates'
 gem 'sprockets', '~> 2.0'
+gem 'puma', '~> 2.16'
 
 group :development, :test do
   gem 'byebug'
@@ -25,4 +26,8 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
+end
+
+group :production do
+  gem 'rails_12factor', '~> 0.0.3'
 end
