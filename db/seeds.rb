@@ -123,15 +123,30 @@ end
 num_states = State.all.count
 
 # For all customers
-Customer.all.pluck(:id).each do |customer_id|
-  # Create a billing address for them
-  create_billing_address(customer_id, num_states)
-  # Create a random number of shipping addresses, making
-  # sure we create at least 1
-  num_shipping_addresses = rand(4) + 1
-  num_shipping_addresses.times do |i|
-    # Create the shipping address, setting the first one
-    # we create as the "primary"
-    create_shipping_address(customer_id, num_states, i == 0)
+if Rails.env == 'production'
+  Customer.all.pluck(:id).each do |customer_id|
+    # Create a billing address for them
+    create_billing_address(customer_id, num_states)
+    # Create a random number of shipping addresses, making
+    # sure we create at least 1
+    num_shipping_addresses = rand(2) + 1
+    num_shipping_addresses.times do |i|
+      # Create the shipping address, setting the first one
+      # we create as the "primary"
+      create_shipping_address(customer_id, num_states, i == 0)
+    end
+  end
+else
+  Customer.all.pluck(:id).each do |customer_id|
+    # Create a billing address for them
+    create_billing_address(customer_id, num_states)
+    # Create a random number of shipping addresses, making
+    # sure we create at least 1
+    num_shipping_addresses = rand(4) + 1
+    num_shipping_addresses.times do |i|
+      # Create the shipping address, setting the first one
+      # we create as the "primary"
+      create_shipping_address(customer_id, num_states, i == 0)
+    end
   end
 end
