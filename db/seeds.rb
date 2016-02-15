@@ -1,15 +1,31 @@
 # Guard against re-creating customers if we already have some
-if Customer.all.size == 0
-  350_000.times do |i|
-    Customer.create!(
-      {
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        username: "#{Faker::Internet.user_name}#{i}",
-        email: Faker::Internet.user_name + i.to_s +
-              "@#{Faker::Internet.domain_name}"
-      }
-    )
+if Rails.env == 'production'
+  if Customer.all.size == 0
+    5_000.times do |i|
+      Customer.create!(
+        {
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
+          username: "#{Faker::Internet.user_name}#{i}",
+          email: Faker::Internet.user_name + i.to_s +
+                "@#{Faker::Internet.domain_name}"
+        }
+      )
+    end
+  end
+else
+  if Customer.all.size == 0
+    350_000.times do |i|
+      Customer.create!(
+        {
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
+          username: "#{Faker::Internet.user_name}#{i}",
+          email: Faker::Internet.user_name + i.to_s +
+                "@#{Faker::Internet.domain_name}"
+        }
+      )
+    end
   end
 end
 
