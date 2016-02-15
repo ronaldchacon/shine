@@ -1,7 +1,7 @@
 # Guard against re-creating customers if we already have some
 if Rails.env == 'production'
   if Customer.all.size == 0
-    5_000.times do |i|
+    2_500.times do |i|
       Customer.create!(
         {
           first_name: Faker::Name.first_name,
